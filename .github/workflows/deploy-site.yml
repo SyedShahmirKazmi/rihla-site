@@ -1,8 +1,8 @@
 # Deploy the company site to Hostinger on every push to main.
 #
 # Required repository settings (Settings → Secrets and variables → Actions):
-#   Variables: FTP_SERVER  e.g. ftp.rihlahtc.com
-#              FTP_DIR     e.g. /public_html/        (docroot of rihlahtc.com)
+#   Variables: FTP_SERVER  e.g. ftp.rihlatc.com
+#              FTP_DIR     e.g. /public_html/        (docroot of rihlatc.com)
 #   Secrets:   FTP_USERNAME, FTP_PASSWORD
 name: Deploy site
 
