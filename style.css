@@ -55,7 +55,10 @@ a { color: var(--maroon); }
 .hero .tagline { font-size: clamp(18px, 2.6vw, 24px); font-style: italic; margin: 14px auto 10px; }
 .hero .sub { max-width: 620px; margin: 0 auto 30px; color: var(--muted); font-size: 17px; }
 .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.hero-shot { margin: 56px auto 0; max-width: 960px; border-radius: 14px; box-shadow: 0 30px 80px rgba(35, 22, 27, 0.22); }
+/* width:100% is what actually makes these shrink. max-width alone only caps the
+   upper bound — below it the image renders at its intrinsic size, so on a phone
+   these overflowed and made the whole page scroll sideways. */
+.hero-shot { display: block; width: 100%; height: auto; margin: 56px auto 0; max-width: 960px; border-radius: 14px; box-shadow: 0 30px 80px rgba(35, 22, 27, 0.22); }
 
 /* Stats strip */
 .stats { background: var(--maroon); color: #fff; padding: 34px 0; margin-top: -6px; }
@@ -103,7 +106,7 @@ h2.title { font-size: clamp(28px, 4vw, 40px); color: var(--maroon); margin: 8px 
 .demo .kicker { color: var(--gold); }
 .demo h2.title { color: #fff; }
 .demo .lede { color: rgba(255, 255, 255, 0.75); }
-.demo-frame { margin: 40px auto 26px; max-width: 880px; border-radius: 14px; box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45); }
+.demo-frame { display: block; width: 100%; height: auto; margin: 40px auto 26px; max-width: 880px; border-radius: 14px; box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45); }
 .demo-note { text-align: center; color: rgba(255, 255, 255, 0.7); font-size: 14.5px; }
 .demo-note a { color: var(--gold); }
 
