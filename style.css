@@ -133,6 +133,16 @@ table.cmp td:first-child { font-weight: 600; }
 .check { color: #1f7a3d; font-weight: 700; }
 .cross { color: #b3453e; }
 
+/* The competition table carries five columns. On a phone it must scroll inside
+   its own box — never widen the page, which would let every section scroll
+   sideways. min-width keeps the columns readable rather than crushed. */
+.cmp-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 30px; }
+.cmp-scroll table.cmp { margin-top: 0; min-width: 720px; }
+/* Keep the row label readable while the comparison columns scroll under it. */
+.cmp-scroll table.cmp td:first-child,
+.cmp-scroll table.cmp th:first-child { position: sticky; left: 0; background: var(--card); }
+.cmp-scroll table.cmp th:first-child { background: var(--maroon); }
+
 @media (max-width: 640px) {
   .nav-links a:not(.btn) { display: none; }
   section { padding: 56px 0; }
