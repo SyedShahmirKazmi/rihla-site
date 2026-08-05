@@ -3,8 +3,11 @@
 // fresh online, and the last response is available offline). Full offline works
 // best against a production build (hashed, cacheable assets).
 
-const CACHE = 'rihla-v1'
-const SHELL = ['/', '/index.html']
+const CACHE = 'rihla-v2'
+// Relative to this worker's own location, which is the app directory. Absolute
+// '/' cached the company website's homepage instead of the app shell, so an
+// offline launch showed the marketing site.
+const SHELL = ['./', './index.html']
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()))

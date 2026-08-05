@@ -2,8 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport-fit=cover lets the app paint under the notch and home
+         indicator like a native app; the CSS below pads content back out with
+         env(safe-area-inset-*). user-scalable=no stops a double-tap zooming the
+         whole UI, which immediately reads as "this is a web page". -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
     <meta name="theme-color" content="#8a1538" />
+
+    <!-- iOS ignores the web manifest for standalone mode and needs its own
+         tags. Without these, "Add to Home Screen" on an iPhone opens Rihla in a
+         Safari tab with the address bar, which is exactly what a website does. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Rihla" />
+    <meta name="format-detection" content="telephone=no" />
     <meta
       name="description"
       content="Rihla plans your Qatar trip in one conversation — day-by-day Doha itineraries with real venues and prices, bookings, budgets, expenses, and visa guidance. English & العربية."
@@ -15,8 +28,8 @@
     <link rel="apple-touch-icon" href="/app/icons/icon-180.png" />
     <link rel="manifest" href="/app/manifest.webmanifest" />
     <title>Rihla — AI Travel Companion</title>
-    <script type="module" crossorigin src="/app/assets/index-DbFNWAib.js"></script>
-    <link rel="stylesheet" crossorigin href="/app/assets/index-D03J3Wr7.css">
+    <script type="module" crossorigin src="/app/assets/index-CSJBAw4u.js"></script>
+    <link rel="stylesheet" crossorigin href="/app/assets/index-DWTiJQD9.css">
   </head>
   <body>
     <div id="root"></div>
