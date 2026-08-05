@@ -238,3 +238,11 @@ table.cmp td:first-child { font-weight: 600; }
   .section { padding: 46px 0; }
   .hero-full { padding: 54px 0 58px; }
 }
+
+/* The hero background is maroon, so the maroon primary button all but vanished
+   against it. Gold on maroon is the brand's own high-contrast pairing. */
+.hero-full .btn-primary {
+  background: var(--gold); color: var(--maroon-deep) !important;
+  box-shadow: 0 8px 22px rgba(0,0,0,.22);
+}
+.hero-full .btn-primary:hover { background: #d8b263; }
