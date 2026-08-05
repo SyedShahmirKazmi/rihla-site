@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rihla — AI Travel Companion for Qatar</title>
-  <meta name="description" content="Rihla plans your Qatar trip in one conversation: real venues, real prices, bookings, budgets and expenses. Built in Doha, in English and Arabic." />
+  <meta name="description" content="Plan a Qatar trip in one conversation. Real Doha venues, real prices, a budget that adds up. In English and Arabic." />
   <meta property="og:title" content="Rihla — AI Travel Companion for Qatar" />
-  <meta property="og:description" content="One conversation plans your whole Qatar trip. Built in Doha." />
+  <meta property="og:description" content="Plan a Qatar trip in one conversation. Built in Doha." />
   <meta property="og:image" content="assets/icon-512.png" />
   <link rel="icon" type="image/png" href="assets/icon-32.png" />
   <link rel="apple-touch-icon" href="assets/icon-192.png" />
@@ -18,144 +18,132 @@
 
 <nav class="nav">
   <div class="wrap">
-    <a class="nav-brand" href="#"><img src="assets/icon-192.png" alt="" />Rihla</a>
-    <div class="nav-links">
-      <a href="#product">Product</a>
-      <a href="#how">How it works</a>
-      <a href="#company">Company</a>
+    <a class="nav-brand" href="index.html"><img src="assets/icon-192.png" alt="" />Rihla</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="product.html">Product</a>
+      <a href="about.html">About</a>
       <a href="investors.html">Investors</a>
-      <!-- When the app is deployed, point this at the live app URL. -->
       <a class="btn btn-primary" href="app/">Try the demo</a>
     </div>
   </div>
 </nav>
 
-<header class="hero wrap">
-  <img class="hero-logo" src="assets/icon-512.png" alt="Rihla dhow logo" />
-  <h1 class="serif">RIHLA</h1>
-  <div class="ar">رحلة</div>
-  <p class="tagline serif">The AI travel companion</p>
-  <p class="sub">
-    One conversation plans your whole Qatar trip. You get a costed day-by-day
-    itinerary built from real Doha venues and real prices, with bookings, budgets,
-    expenses and visa guidance in one place. In English and Arabic.
-  </p>
-  <div class="hero-ctas">
-    <a class="btn btn-primary" href="app/">Try the demo</a>
-    <a class="btn btn-ghost" href="investors.html">Investor deck</a>
+<header class="hero-full">
+  <div class="hero-inner wrap">
+    <img class="hero-logo" src="assets/icon-512.png" alt="Rihla dhow logo" />
+    <h1 class="serif">Doha, planned properly</h1>
+    <div class="ar">رحلة</div>
+    <p class="sub">
+      Tell Rihla how long you have and what you can spend. You get a day-by-day
+      plan of real places at real prices, with the total always in front of you.
+      English or Arabic.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="app/">Plan a trip now</a>
+      <a class="btn btn-ghost" href="product.html">See how it works</a>
+    </div>
+    <p class="hero-fine">Free. No account needed to try.</p>
   </div>
-  <img class="hero-shot" src="assets/plan-desktop.png" alt="Rihla planning a 3-day Doha itinerary with a live budget" />
 </header>
 
-<div class="stats">
+<!-- Thematic entry points. People choose a trip by what they want to do, not by
+     a feature list, which is how every tourism board organises its front page. -->
+<section class="section">
   <div class="wrap">
-    <div class="stat"><b>5M+</b><span>visitors to Qatar in 2024*</span></div>
-    <div class="stat"><b>40+</b><span>curated Doha venues ground every plan</span></div>
-    <div class="stat"><b>2</b><span>languages: English &amp; العربية, full RTL</span></div>
-    <div class="stat"><b>1</b><span>conversation from idea to itinerary</span></div>
-  </div>
-</div>
-
-<section id="product">
-  <div class="wrap">
-    <span class="kicker">Product</span>
-    <h2 class="title serif">Everything a trip needs, in one companion</h2>
-    <p class="lede">
-      Most travel apps make you do the work. Rihla's agent does it with you, and
-      every riyal it quotes comes from curated local data.
-    </p>
-
-    <div class="grid">
-      <div class="card"><div class="em">🗺️</div><h3>Plan</h3><p>Chat your way to a costed day-by-day itinerary. Transport included, always inside your budget.</p></div>
-      <div class="card"><div class="em">💰</div><h3>Budget</h3><p>A deterministic engine totals every plan and re-fits it to your target with one tap. The AI never does the math.</p></div>
-      <div class="card"><div class="em">🚕</div><h3>Book</h3><p>One-tap hand-offs to Uber, Careem, Karwa, Hayya and Q-Tickets. The app opens if you have it, the store if you don't.</p></div>
-      <div class="card"><div class="em">🧾</div><h3>Expenses</h3><p>Snap a receipt. AI reads the merchant, date and total and logs it against your trip. Originals stay encrypted.</p></div>
-      <div class="card"><div class="em">🛂</div><h3>Visa &amp; Safety</h3><p>Nationality-aware entry guidance with official Hayya/MOI links, emergency contacts, and opt-in trip sharing.</p></div>
-      <div class="card"><div class="em">🎙️</div><h3>Voice &amp; Memory</h3><p>Speak your request. Rihla remembers that you're vegetarian, or travelling with kids, and plans around it.</p></div>
-    </div>
-
-    <div class="split">
-      <div>
-        <h3 class="serif">Bilingual by design</h3>
-        <p>
-          Switch to العربية and the whole interface flips: layout, navigation, and the
-          agent's own replies. Built in Arabic from the start
-          for it.
-        </p>
-        <ul>
-          <li>Full right-to-left interface</li>
-          <li>Agent conversation in your language</li>
-          <li>Halal and family preferences respected in every plan</li>
-        </ul>
-      </div>
-      <div><img src="assets/plan-arabic-rtl.png" alt="Rihla in Arabic with right-to-left layout" /></div>
-    </div>
-
-    <div class="split">
-      <div><img src="assets/plan-mobile.png" alt="Rihla mobile interface" style="max-width:320px;margin:0 auto" /></div>
-      <div>
-        <h3 class="serif">Made for the trip, not the desk</h3>
-        <p>
-          A mobile-first experience with offline caching for the moments
-          connectivity drops, souq basements included. Installable today as a
-          web app; native iOS &amp; Android wrap on the roadmap.
-        </p>
-      </div>
+    <span class="kicker">Start with what you're in the mood for</span>
+    <h2 class="title serif">Four ways into Doha</h2>
+    <div class="theme-grid">
+      <a class="theme-card culture" href="app/">
+        <span class="theme-em">🕌</span>
+        <h3>Museums &amp; old Doha</h3>
+        <p>Souq Waqif after sunset, the Museum of Islamic Art, Msheireb. Plenty of it free.</p>
+        <span class="theme-go">Plan this →</span>
+      </a>
+      <a class="theme-card desert" href="app/">
+        <span class="theme-em">🏜️</span>
+        <h3>Desert &amp; the Inland Sea</h3>
+        <p>Dune drives and Khor Al Adaid. Half a day, and the biggest line in most budgets.</p>
+        <span class="theme-go">Plan this →</span>
+      </a>
+      <a class="theme-card food" href="app/">
+        <span class="theme-em">🍽️</span>
+        <h3>Eating well, any budget</h3>
+        <p>Karak and chapati for a few riyals, or a long dinner on the Corniche.</p>
+        <span class="theme-go">Plan this →</span>
+      </a>
+      <a class="theme-card family" href="app/">
+        <span class="theme-em">👨‍👩‍👧</span>
+        <h3>With the family</h3>
+        <p>Parks, beaches and short indoor days for when the heat wins. Halal by default.</p>
+        <span class="theme-go">Plan this →</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section id="how" style="background:var(--cream-2)">
+<section class="section alt">
   <div class="wrap">
-    <span class="kicker">How it works</span>
-    <h2 class="title serif">Three minutes to a full itinerary</h2>
+    <span class="kicker">Why it's different</span>
+    <h2 class="title serif">A plan you can actually afford</h2>
+    <p class="lede">
+      Ask a general AI chatbot for a Doha itinerary and it will invent a
+      restaurant, guess a price, and never add anything up. Rihla answers from a
+      curated list of real Doha venues, and the arithmetic is done by code, not
+      by the model.
+    </p>
+    <div class="num-row">
+      <div class="num"><b>40</b><span>curated Doha venues with checked price ranges</span></div>
+      <div class="num"><b>0</b><span>invented prices, because the totals are computed</span></div>
+      <div class="num"><b>2</b><span>languages, English and العربية with full RTL</span></div>
+    </div>
+    <img class="hero-shot" src="assets/plan-desktop.png" alt="A costed Doha itinerary in Rihla" loading="lazy" />
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="kicker">How it goes</span>
+    <h2 class="title serif">About three minutes</h2>
     <div class="steps">
-      <div class="step"><h3>Say what you want</h3><p>"Weekend in Doha with my mom. She loves art and gardens. 1500 QAR." Type it or say it.</p></div>
-      <div class="step"><h3>Get a real plan</h3><p>Museum mornings, souq evenings, a sunset dhow cruise. Every item is a real venue with a realistic price, summed live against your budget.</p></div>
-      <div class="step"><h3>Refine and go</h3><p>Fit it to budget, book your rides, track expenses as you spend. Your trip and preferences are saved for next time.</p></div>
+      <div class="step"><h3>Say what you want</h3><p>"Weekend in Doha with my mom. She loves art and gardens. 1500 QAR." Type it or say it out loud.</p></div>
+      <div class="step"><h3>Get a costed plan</h3><p>Museum mornings, souq evenings, a sunset dhow cruise. Every line is a real venue with a real price, summed as it builds.</p></div>
+      <div class="step"><h3>Adjust and go</h3><p>Too expensive? One tap refits the whole trip to your number. Then book the rides and track what you spend.</p></div>
     </div>
+    <div class="center"><a class="btn btn-primary" href="app/">Try it now</a></div>
   </div>
 </section>
 
-<section class="demo" id="demo">
+<section class="section alt">
   <div class="wrap">
-    <span class="kicker">Demo</span>
-    <h2 class="title serif">Watch Rihla plan a real trip</h2>
-    <p class="lede">Recorded from the live product: a real AI-planned weekend, grounded in real Doha venues.</p>
-    <img class="demo-frame" src="assets/demo.gif" alt="Animated demo: Rihla plans a Doha weekend in one conversation" />
-    <p class="demo-note">
-      <a href="app/">Open the interactive demo</a>, or
-      <a href="mailto:hello@rihlatc.com?subject=Rihla%20live%20demo">request a live demo</a>
-      and we'll get you access.
-    </p>
-  </div>
-</section>
-
-<section id="company">
-  <div class="wrap">
-    <span class="kicker">Company</span>
-    <h2 class="title serif">Built in Doha, for Qatar's tourism decade</h2>
+    <span class="kicker">Built here</span>
+    <h2 class="title serif">Made in Doha, for Qatar</h2>
     <p class="lede">
-      Qatar welcomed a record five million visitors in 2024, and its national
-      strategy aims higher by 2030*. Those visitors, and the people who live here,
-      need a companion that knows the country and is straight about what things cost.
+      Qatar welcomed a record five million visitors in 2024, and the national
+      strategy aims higher by 2030.* Those visitors, and the people who live
+      here, need a companion that knows the country and is straight about what
+      things cost. Rihla is built in Doha, in Arabic and English, by people who
+      live with the answers it gives.
     </p>
-    <div class="grid">
-      <div class="card"><h3>Today</h3><p>Full product built and tested: planner, budget engine, bookings, expenses with receipt OCR, documents wallet, visa and safety. Covered by CI and end-to-end tests.</p></div>
-      <div class="card"><h3>Next</h3><p>Public launch, native iOS &amp; Android via Capacitor, licensed payment processing, and partnerships with Qatar tourism operators.</p></div>
-      <div class="card"><h3>Destination</h3><p>Qatar Travel Mart 2026, presenting Rihla as the AI layer for Qatar's visitor economy.</p></div>
+    <div class="center" style="margin-top:22px">
+      <a class="btn btn-ghost" href="about.html">More about the company</a>
     </div>
-    <p class="fine">*Sources: Qatar Tourism visitor statistics 2024; Qatar National Tourism Strategy 2030. Figures rounded.</p>
+    <p class="fine">*Qatar Tourism visitor statistics 2024 and National Tourism Strategy 2030 targets. Figures rounded.</p>
   </div>
 </section>
 
-<footer>
+<footer class="footer">
   <div class="wrap">
-    <span class="foot-brand"><img src="assets/icon-192.png" alt="" />Rihla AI Travel Companion</span>
-    <span>Doha, Qatar · <a href="mailto:hello@rihlatc.com">hello@rihlatc.com</a></span>
-    <span><a href="investors.html">Investors</a> · Instagram coming soon</span>
+    <span>© 2026 Rihla AI Travel Companion · Doha, Qatar</span>
+    <span>
+      <a href="product.html">Product</a> ·
+      <a href="about.html">About</a> ·
+      <a href="investors.html">Investors</a> ·
+      <a href="mailto:hello@rihlatc.com">hello@rihlatc.com</a>
+    </span>
   </div>
 </footer>
 
+<script src="nav.js"></script>
 </body>
 </html>

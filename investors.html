@@ -15,8 +15,11 @@
 <nav class="nav">
   <div class="wrap">
     <a class="nav-brand" href="index.html"><img src="assets/icon-192.png" alt="" />Rihla</a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="product.html">Product</a>
+      <a href="about.html">About</a>
+      <a href="investors.html" class="current">Investors</a>
       <a class="btn btn-gold" href="mailto:hello@rihlatc.com?subject=Rihla%20investor%20intro">Contact the founder</a>
     </div>
   </div>
@@ -180,9 +183,10 @@
   <div class="wrap">
     <span class="foot-brand"><img src="assets/icon-192.png" alt="" />Rihla AI Travel Companion</span>
     <span>Doha, Qatar · <a href="mailto:hello@rihlatc.com">hello@rihlatc.com</a></span>
-    <span><a href="index.html">rihla · home</a></span>
+    <span><a href="index.html">Home</a> · <a href="product.html">Product</a> · <a href="about.html">About</a></span>
   </div>
 </footer>
 
+<script src="nav.js"></script>
 </body>
 </html>

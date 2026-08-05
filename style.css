@@ -150,3 +150,91 @@ table.cmp td:first-child { font-weight: 600; }
   .nav-links a:not(.btn) { display: none; }
   section { padding: 56px 0; }
 }
+
+/* ---------------------------------------------------------------------------
+   Multi-page site: shared nav, hero, thematic cards, page heads.
+   --------------------------------------------------------------------------- */
+
+.nav-links a.current { color: var(--maroon); font-weight: 700; }
+.nav-burger {
+  display: none; margin-inline-start: auto; border: 0; background: none;
+  font-size: 22px; line-height: 1; color: var(--maroon); cursor: pointer; padding: 4px 6px;
+}
+
+/* Full-bleed hero. No licensed photography yet, so this leans on the brand
+   palette rather than a stock image that would look like every other site. */
+.hero-full {
+  background:
+    radial-gradient(90rem 40rem at 50% -20%, rgba(201, 162, 75, 0.28), transparent 60%),
+    linear-gradient(160deg, #6d1029 0%, #8a1538 45%, #a53c56 100%);
+  color: #fff;
+  padding: 72px 0 78px;
+  text-align: center;
+}
+.hero-inner .hero-logo { width: 92px; height: 92px; border-radius: 22px; margin: 0 auto 18px; display: block; }
+.hero-full h1 { font-size: clamp(34px, 6vw, 60px); margin: 0 0 6px; color: #fff; }
+.hero-full .ar { font-size: 26px; opacity: 0.72; margin-bottom: 14px; }
+.hero-full .sub { max-width: 620px; margin: 0 auto; font-size: 17px; line-height: 1.65; opacity: 0.94; }
+.hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+.hero-full .btn-ghost { border-color: rgba(255,255,255,.6); color: #fff; }
+.hero-full .btn-ghost:hover { background: rgba(255,255,255,.12); }
+.hero-fine { margin-top: 16px; font-size: 13px; opacity: 0.75; }
+
+.section { padding: 64px 0; }
+.section.alt { background: var(--cream-2, #f2ece6); }
+.page-head { padding: 54px 0 8px; }
+.center { text-align: center; margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* Thematic cards: people pick a trip by mood, not by feature. */
+.theme-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 30px; }
+.theme-card {
+  position: relative; display: flex; flex-direction: column; gap: 8px;
+  padding: 22px 20px 18px; border-radius: 16px; text-decoration: none;
+  color: var(--ink); background: var(--card); border: 1px solid var(--line);
+  overflow: hidden; transition: transform .16s ease, box-shadow .16s ease;
+}
+.theme-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(35,22,27,.13); }
+.theme-card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 4px; }
+.theme-card.culture::before { background: #8a1538; }
+.theme-card.desert::before  { background: #c9a24b; }
+.theme-card.food::before    { background: #b45309; }
+.theme-card.family::before  { background: #2e7d32; }
+.theme-em { font-size: 30px; line-height: 1; }
+.theme-card h3 { margin: 0; font-size: 17px; color: var(--maroon); }
+.theme-card p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.55; }
+.theme-go { margin-top: auto; padding-top: 10px; font-size: 13px; font-weight: 700; color: var(--maroon); }
+
+/* Numbered steps */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 30px; }
+.step { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; }
+
+.step h3 { margin: 0 0 6px; font-size: 16px; }
+.step p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+/* Two-column text + screenshot */
+.two-col { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+.two-col.reverse > :first-child { order: 2; }
+.shot { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: 0 22px 50px rgba(35,22,27,.16); }
+.ticks { list-style: none; padding: 0; margin: 18px 0 0; }
+.ticks li { position: relative; padding-inline-start: 26px; margin-bottom: 9px; font-size: 15px; }
+.ticks li::before { content: '✓'; position: absolute; inset-inline-start: 0; color: var(--ok); font-weight: 800; }
+
+.card.person img { width: 62px; height: 62px; border-radius: 14px; margin-bottom: 10px; }
+.card.person .role { color: var(--maroon); font-weight: 700; font-size: 13px; margin: 0 0 6px; }
+
+.footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+
+@media (max-width: 820px) {
+  .two-col { grid-template-columns: 1fr; gap: 26px; }
+  .two-col.reverse > :first-child { order: 0; }
+}
+@media (max-width: 640px) {
+  .nav-burger { display: block; }
+  .nav .wrap { flex-wrap: wrap; }
+  /* Overrides the earlier rule that hid every non-button link on mobile. */
+  .nav-links { display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 4px; padding: 10px 0 4px; }
+  .nav-links.open { display: flex; }
+  .nav-links a:not(.btn) { display: block; padding: 11px 4px; border-bottom: 1px solid var(--line); }
+  .section { padding: 46px 0; }
+  .hero-full { padding: 54px 0 58px; }
+}
