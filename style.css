@@ -267,9 +267,10 @@ table.cmp td:first-child { font-weight: 600; }
 .layer-pattern {
   inset: 0;
   -webkit-mask: url('assets/pattern.svg') repeat; mask: url('assets/pattern.svg') repeat;
-  -webkit-mask-size: 108px 108px; mask-size: 108px 108px;
+  -webkit-mask-size: 132px 132px; mask-size: 132px 132px;
   background-color: #fff;
-  opacity: 0.08;
+  /* Texture, not wallpaper: it has to sit under body copy without competing. */
+  opacity: 0.05;
 }
 .layer-skyline {
   bottom: 74px; height: 190px;
