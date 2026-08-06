@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" aria-hidden="true">
+  <!-- The dhow: Qatar's pearling boat, and the mark in the Rihla logo. -->
+  <g fill="currentColor">
+    <path d="M40 150h220c-10 22-34 34-72 34h-76c-38 0-62-12-72-34z"/>
+    <rect x="146" y="34" width="4" height="116" rx="2"/>
+    <path d="M150 40l86 104H150z"/>
+    <path d="M144 62L74 144h70z" opacity=".72"/>
+    <circle cx="148" cy="30" r="5"/>
+  </g>
+</svg>

@@ -246,3 +246,89 @@ table.cmp td:first-child { font-weight: 600; }
   box-shadow: 0 8px 22px rgba(0,0,0,.22);
 }
 .hero-full .btn-primary:hover { background: #d8b263; }
+
+/* ---------------------------------------------------------------------------
+   Heritage layers.
+   The hero was a flat maroon gradient with a logo on it, which said nothing
+   about Qatar. These four SVG planes (3 KB total) give it a sense of place and
+   a little depth on scroll. Silhouettes rather than photographs, because we
+   hold no photo rights, and because a silhouette scales to any screen without
+   art direction.
+   --------------------------------------------------------------------------- */
+
+.hero-full { position: relative; overflow: hidden; isolation: isolate; }
+.hero-inner { position: relative; z-index: 2; }
+.hero-layers { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.layer { position: absolute; inset-inline: 0; will-change: transform; }
+
+/* These are masks, not background images: an SVG used as background-image
+   cannot inherit currentColor, so every layer would render black. Masking lets
+   background-color do the tinting and keeps one file per shape. */
+.layer-pattern {
+  inset: 0;
+  -webkit-mask: url('assets/pattern.svg') repeat; mask: url('assets/pattern.svg') repeat;
+  -webkit-mask-size: 108px 108px; mask-size: 108px 108px;
+  background-color: #fff;
+  opacity: 0.08;
+}
+.layer-skyline {
+  bottom: 74px; height: 190px;
+  -webkit-mask: url('assets/skyline.svg') no-repeat center bottom / cover;
+  mask: url('assets/skyline.svg') no-repeat center bottom / cover;
+  background-color: #4d0a1c;
+  opacity: 0.55;
+}
+.layer-dunes {
+  bottom: 0; height: 132px;
+  -webkit-mask: url('assets/dunes.svg') no-repeat center bottom / 100% 100%;
+  mask: url('assets/dunes.svg') no-repeat center bottom / 100% 100%;
+  background-color: var(--gold);
+  opacity: 0.26;
+}
+.layer-dhow {
+  bottom: 26px; height: 96px;
+  -webkit-mask: url('assets/dhow.svg') no-repeat 84% bottom / auto 92px;
+  mask: url('assets/dhow.svg') no-repeat 84% bottom / auto 92px;
+  background-color: var(--cream);
+  opacity: 0.55;
+  animation: sail 9s ease-in-out infinite;
+}
+@keyframes sail {
+  0%, 100% { transform: translateY(0) rotate(-0.6deg); }
+  50%      { transform: translateY(-7px) rotate(0.6deg); }
+}
+
+/* The same star motif marks section kickers, tying the pages together without
+   adding another asset. */
+.section.alt { position: relative; }
+.section.alt::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  -webkit-mask: url('assets/pattern.svg') repeat; mask: url('assets/pattern.svg') repeat;
+  -webkit-mask-size: 96px 96px; mask-size: 96px 96px;
+  background-color: var(--maroon);
+  opacity: 0.045;
+}
+.section.alt > .wrap { position: relative; z-index: 1; }
+
+/* A dhow on the theme cards, quiet until hover. */
+.theme-card::after {
+  content: ''; position: absolute; right: -14px; bottom: -12px;
+  width: 96px; height: 64px;
+  -webkit-mask: url('assets/dhow.svg') no-repeat center / contain;
+  mask: url('assets/dhow.svg') no-repeat center / contain;
+  background-color: var(--maroon);
+  opacity: 0.06;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.theme-card:hover::after { opacity: 0.12; transform: translateY(-4px); }
+
+/* Anyone who asks for less motion gets a still scene, not a broken one. */
+@media (prefers-reduced-motion: reduce) {
+  .layer-dhow { animation: none; }
+  .layer { transform: none !important; }
+}
+@media (max-width: 640px) {
+  .layer-skyline { bottom: 56px; height: 130px; opacity: .42; }
+  .layer-dunes { height: 96px; }
+  .layer-dhow { -webkit-mask-size: auto 64px; mask-size: auto 64px; -webkit-mask-position: 88% bottom; mask-position: 88% bottom; bottom: 18px; }
+}

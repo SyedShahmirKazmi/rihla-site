@@ -30,6 +30,15 @@
 </nav>
 
 <header class="hero-full">
+  <!-- Layered heritage scene. Four SVGs, 3 KB in total, each on its own depth
+       plane so scrolling gives the hero parallax. Deliberately silhouettes: they
+       evoke Doha without pretending to be photographs we do not have rights to. -->
+  <div class="hero-layers" aria-hidden="true">
+    <div class="layer layer-pattern" data-depth="0.08"></div>
+    <div class="layer layer-skyline" data-depth="0.22"></div>
+    <div class="layer layer-dunes"   data-depth="0.42"></div>
+    <div class="layer layer-dhow"    data-depth="0.62"></div>
+  </div>
   <div class="hero-inner wrap">
     <img class="hero-logo" src="assets/icon-512.png" alt="Rihla dhow logo" />
     <h1 class="serif">Doha, planned properly</h1>

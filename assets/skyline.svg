@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <!-- West Bay skyline, stylised. Silhouette only: recognisable to anyone who
+       has seen Doha from the Corniche, without pretending to be a photograph. -->
+  <g fill="currentColor">
+    <path d="M60 260V150c0-8 5-14 12-14s12 6 12 14v110z"/>
+    <path d="M110 260V120l16-26 16 26v140z"/>
+    <rect x="165" y="168" width="26" height="92" rx="3"/>
+    <!-- Tornado Tower: waisted profile -->
+    <path d="M215 260c0-40 14-58 14-84s-14-40-14-70h44c0 30-14 44-14 70s14 44 14 84z"/>
+    <rect x="285" y="140" width="20" height="120" rx="2"/>
+    <!-- Burj Qatar: tapered cylinder -->
+    <path d="M330 260V128c0-24 8-40 18-40s18 16 18 40v132z"/>
+    <rect x="390" y="180" width="30" height="80" rx="3"/>
+    <path d="M440 260V112l14-22 14 22v148z"/>
+    <rect x="495" y="196" width="22" height="64" rx="2"/>
+    <!-- Museum of Islamic Art: stacked cubes -->
+    <path d="M560 260v-52h64v52zm12-52v-30h40v30zm10-30v-22h20v22z"/>
+    <rect x="650" y="176" width="24" height="84" rx="2"/>
+    <path d="M700 260V132c0-18 7-30 15-30s15 12 15 30v128z"/>
+    <rect x="756" y="200" width="28" height="60" rx="3"/>
+    <path d="M812 260V104l16-24 16 24v156z"/>
+    <rect x="872" y="184" width="22" height="76" rx="2"/>
+    <path d="M916 260c0-36 12-52 12-76s-12-36-12-62h40c0 26-12 38-12 62s12 40 12 76z"/>
+    <rect x="988" y="164" width="30" height="96" rx="3"/>
+    <path d="M1044 260V124l15-24 15 24v136z"/>
+    <rect x="1100" y="192" width="24" height="68" rx="2"/>
+    <path d="M1150 260V148c0-10 6-18 14-18s14 8 14 18v112z"/>
+    <rect x="1204" y="176" width="26" height="84" rx="3"/>
+    <path d="M1258 260V136l14-20 14 20v124z"/>
+    <rect x="1316" y="200" width="22" height="60" rx="2"/>
+    <path d="M1364 260V160c0-8 5-14 11-14s11 6 11 14v100z"/>
+  </g>
+</svg>
