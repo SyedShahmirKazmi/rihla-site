@@ -333,3 +333,32 @@ table.cmp td:first-child { font-weight: 600; }
   .layer-dunes { height: 96px; }
   .layer-dhow { -webkit-mask-size: auto 64px; mask-size: auto 64px; -webkit-mask-position: 88% bottom; mask-position: 88% bottom; bottom: 18px; }
 }
+
+/* Inner pages get the same scene, shallower. Without this they read as a
+   different product from the homepage. */
+.page-head-full {
+  position: relative; overflow: hidden; isolation: isolate;
+  background:
+    radial-gradient(70rem 30rem at 50% -30%, rgba(201,162,75,.24), transparent 60%),
+    linear-gradient(160deg, #6d1029 0%, #8a1538 55%, #a53c56 100%);
+  color: #fff;
+  padding: 54px 0 62px;
+  text-align: center;
+}
+.page-head-inner { position: relative; z-index: 2; }
+.page-head-full .kicker { color: var(--gold); }
+.page-head-full h1.title { color: #fff; margin-top: 10px; }
+.page-head-full .lede { color: rgba(255,255,255,.9); margin-inline: auto; }
+.page-layers .layer-skyline { bottom: 0; height: 128px; opacity: .38; }
+.page-layers .layer-dunes { height: 84px; opacity: .2; }
+.page-layers .layer-pattern { opacity: .045; }
+
+/* Investors cover: the star motif, quietly. */
+.deck-cover-pattern { position: relative; isolation: isolate; }
+.deck-cover-pattern::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  -webkit-mask: url('assets/pattern.svg') repeat; mask: url('assets/pattern.svg') repeat;
+  -webkit-mask-size: 120px 120px; mask-size: 120px 120px;
+  background-color: var(--maroon);
+  opacity: .05;
+}
