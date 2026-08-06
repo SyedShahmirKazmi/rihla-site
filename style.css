@@ -362,3 +362,9 @@ table.cmp td:first-child { font-weight: 600; }
   background-color: var(--maroon);
   opacity: .05;
 }
+
+/* Team cards: discipline on its own line, above the detail. */
+.role-line { color: var(--maroon); font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+/* The open seat is a vacancy, not a person — dashed, so it reads that way. */
+.open-seat { border-style: dashed; border-color: var(--gold); background: transparent; box-shadow: none; }
+.open-seat img { opacity: .35; }
