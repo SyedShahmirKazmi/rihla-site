@@ -368,3 +368,19 @@ table.cmp td:first-child { font-weight: 600; }
 /* The open seat is a vacancy, not a person — dashed, so it reads that way. */
 .open-seat { border-style: dashed; border-color: var(--gold); background: transparent; box-shadow: none; }
 .open-seat img { opacity: .35; }
+
+/* Scroll reveal. Transform and opacity only: both are compositor properties, so
+   this never triggers layout while scrolling. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.shown { opacity: 1; transform: none; }
+
+/* If JavaScript never runs, nothing should stay invisible. */
+.no-js .reveal { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
