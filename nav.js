@@ -25,7 +25,7 @@
 // Hero parallax. Each layer moves at its own rate on scroll, which is what
 // makes a flat gradient read as depth. Deliberately small numbers: this should
 // register as "the scene has weight", not as an effect anyone notices.
-(function () {
+;(function () {
   var layers = [].slice.call(document.querySelectorAll('.hero-layers .layer'))
   if (!layers.length) return
   // Honour the OS setting rather than animating over someone's objection.
@@ -60,7 +60,7 @@
 // IntersectionObserver rather than a scroll handler: the browser does the work
 // off the main thread, and elements are unobserved once shown, so scrolling a
 // long page costs nothing after the first pass.
-(function () {
+;(function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   var targets = document.querySelectorAll(
     '.theme-card, .card, .step, .num, .two-col > *, .hero-shot, .demo-frame, .cmp-scroll'
