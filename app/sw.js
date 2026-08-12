@@ -3,7 +3,7 @@
 // fresh online, and the last response is available offline). Full offline works
 // best against a production build (hashed, cacheable assets).
 
-const CACHE = 'rihla-v3'
+const CACHE = 'rihla-v4'
 // Relative to this worker's own location, which is the app directory. Absolute
 // '/' cached the company website's homepage instead of the app shell, so an
 // offline launch showed the marketing site.
@@ -78,7 +78,25 @@ self.addEventListener('fetch', (e) => {
   // Other cross-origin requests (fonts, unpkg CSS): default browser handling.
   if (url.origin !== self.location.origin) return
 
-  // Shell/assets: cache-first, populate on miss, fall back to the shell.
+  // The HTML shell: NETWORK-FIRST. It was cache-first, which froze every
+  // returning visitor on whatever build they saw first — new tabs shipped and
+  // nobody with a warm cache ever received them. HTML is tiny; fetch it fresh,
+  // fall back to cache only when offline.
+  if (req.mode === 'navigate' || url.pathname.endsWith('/index.html')) {
+    e.respondWith(
+      fetch(req)
+        .then((resp) => {
+          const copy = resp.clone()
+          caches.open(CACHE).then((c) => c.put(req, copy))
+          return resp
+        })
+        .catch(() => caches.match(req).then((hit) => hit || caches.match('./index.html'))),
+    )
+    return
+  }
+
+  // Hashed assets: cache-first is correct — a new build references new hashes,
+  // so a fresh shell always pulls fresh assets.
   e.respondWith(
     caches.match(req).then(
       (hit) =>
