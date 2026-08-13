@@ -3,11 +3,13 @@
 // request via hello@rihlatc.com). Progressive enhancement: without JS the
 // section simply shows the email link.
 ;(function () {
-  var form = document.querySelector('.waitlist-form')
-  if (!form) return
+  var forms = document.querySelectorAll('.waitlist-form')
+  forms.forEach(function (form) { bind(form) })
+
+  function bind(form) {
   var input = form.querySelector('input[type="email"]')
   var btn = form.querySelector('button')
-  var note = document.querySelector('.waitlist-note')
+  var note = form.parentElement.querySelector('.waitlist-note')
 
   form.addEventListener('submit', function (e) {
     e.preventDefault()
@@ -32,4 +34,5 @@
         note.textContent = "That didn't work — check the address, or email hello@rihlatc.com and we'll add you."
       })
   })
+  }
 })()

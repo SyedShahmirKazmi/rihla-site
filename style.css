@@ -433,14 +433,30 @@ table.cmp td:first-child { font-weight: 600; }
   .getapp-backdrop, .getapp { animation: none; }
 }
 
-/* Waitlist form (homepage) */
+/* Waitlist band — full-bleed maroon, same heritage layers as the hero, so the
+   section reads as a destination rather than a form bolted above the footer. */
+.waitlist-band {
+  position: relative; overflow: hidden; text-align: center;
+  background: linear-gradient(160deg, #8a1538 0%, #6d1029 100%);
+  padding: 72px 0 96px; color: #fff;
+}
+.waitlist-band .hero-layers { opacity: .5; }
+.waitlist-inner { position: relative; z-index: 2; text-align: center; }
+.waitlist-band .kicker { display: block; margin-bottom: 4px; }
+.waitlist-band .kicker.light { color: #e9c46a; }
+.waitlist-band .title { color: #fff; margin: 10px 0 8px; }
+.waitlist-lede { color: rgba(255,255,255,.85); max-width: 520px; margin: 0 auto 6px; font-size: 16.5px; line-height: 1.55; }
 .waitlist-form {
   display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  max-width: 460px; margin: 18px auto 10px;
+  max-width: 480px; margin: 22px auto 12px;
 }
 .waitlist-form input {
-  flex: 1; min-width: 220px; padding: 13px 16px;
-  border: 1px solid var(--line, #ddd); border-radius: 12px;
-  font: inherit; font-size: 15px;
+  flex: 1; min-width: 220px; padding: 14px 18px;
+  border: 0; border-radius: 12px; font: inherit; font-size: 15.5px;
+  background: #fff; color: #1c1c1e;
 }
-.waitlist-note.ok { color: #2e7d32; font-weight: 700; }
+.waitlist-form input:focus { outline: 3px solid #e9c46a; }
+.waitlist-band .waitlist-note, .waitlist-band .waitlist-note a { color: rgba(255,255,255,.75); }
+.waitlist-note.ok { color: #a5e8ab !important; font-weight: 700; }
+.hero-waitlist-link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 640px) { .waitlist-band { padding: 56px 0 80px; } }
