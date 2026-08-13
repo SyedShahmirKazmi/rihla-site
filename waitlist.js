@@ -23,15 +23,29 @@
       body: JSON.stringify({ email: email, source: 'homepage' }),
     })
       .then(function (r) {
-        if (!r.ok) throw new Error(String(r.status))
+        if (!r.ok) {
+          return r.json().then(function (j) {
+            var e = new Error(String(r.status))
+            e.serverMessage = j && j.error
+            e.suggestion = j && j.suggestion
+            throw e
+          })
+        }
         form.style.display = 'none'
         note.textContent = "You're on the list — we'll write before Qatar Travel Mart 2026. شكرًا!"
         note.classList.add('ok')
       })
-      .catch(function () {
+      .catch(function (err) {
         btn.disabled = false
         btn.textContent = 'Notify me'
-        note.textContent = "That didn't work — check the address, or email hello@rihlatc.com and we'll add you."
+        // Show the server's actual reason ("Did you mean gmail.com?", "That
+        // doesn't look like an email address") instead of a generic shrug.
+        if (err && err.serverMessage) {
+          note.textContent = err.serverMessage
+          if (err.suggestion) input.value = err.suggestion
+        } else {
+          note.textContent = "That didn't work — check the address, or email hello@rihlatc.com and we'll add you."
+        }
       })
   })
   }
