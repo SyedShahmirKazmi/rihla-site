@@ -432,3 +432,15 @@ table.cmp td:first-child { font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   .getapp-backdrop, .getapp { animation: none; }
 }
+
+/* Waitlist form (homepage) */
+.waitlist-form {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  max-width: 460px; margin: 18px auto 10px;
+}
+.waitlist-form input {
+  flex: 1; min-width: 220px; padding: 13px 16px;
+  border: 1px solid var(--line, #ddd); border-radius: 12px;
+  font: inherit; font-size: 15px;
+}
+.waitlist-note.ok { color: #2e7d32; font-weight: 700; }
