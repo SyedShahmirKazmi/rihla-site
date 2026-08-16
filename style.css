@@ -33,6 +33,12 @@ a { color: var(--maroon); }
 .nav .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
 .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--maroon); font-weight: 800; font-size: 20px; }
 .nav-brand img { width: 34px; height: 34px; border-radius: 8px; }
+
+/* Trademark notation — a small superscript ™ pinned to the upper right of
+   the wordmark, never large enough to compete with it. Kept LTR so it
+   doesn't get reordered if this ever sits inside an RTL context. */
+.tm { font-size: 0.42em; font-weight: 700; vertical-align: super; line-height: 1; opacity: 0.65; margin-inline-start: 1px; unicode-bidi: isolate; }
+.foot-brand .tm, .deck-cover .tm { opacity: 0.7; }
 .nav-links { display: flex; gap: 22px; margin-left: auto; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--ink); font-size: 15px; font-weight: 500; }
 .nav-links a:hover { color: var(--maroon); }
@@ -111,11 +117,21 @@ h2.title { font-size: clamp(28px, 4vw, 40px); color: var(--maroon); margin: 8px 
 .demo-note a { color: var(--gold); }
 
 /* Footer */
-footer { background: var(--ink); color: rgba(255, 255, 255, 0.75); padding: 46px 0; font-size: 14.5px; }
+footer { background: var(--ink); color: rgba(255, 255, 255, 0.75); padding: 40px 0 28px; font-size: 14.5px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
 footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
 .foot-brand { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; }
 .foot-brand img { width: 28px; height: 28px; border-radius: 6px; }
+
+/* Legal row: visually secondary (smaller, muted, a hairline above it) so it
+   reads as "also here if you need it", not as a second competing footer. */
+.footer-legal {
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center;
+  justify-content: space-between; font-size: 13px; color: rgba(255, 255, 255, 0.5);
+}
+.footer-legal a { color: rgba(255, 255, 255, 0.7); }
 
 /* Deck (investors) */
 .deck-section { border-bottom: 1px solid var(--cream-2); }
@@ -183,6 +199,24 @@ table.cmp td:first-child { font-weight: 600; }
 .section { padding: 64px 0; }
 .section.alt { background: var(--cream-2, #f2ece6); }
 .page-head { padding: 54px 0 8px; }
+
+/* Legal pages (Intellectual Property, and anywhere similar reads better
+   narrower than the marketing sections around it). */
+.legal-page { max-width: 720px; }
+.legal-page h2 { margin-top: 34px; }
+.legal-page h2:first-of-type { margin-top: 0; }
+.legal-page .lede { max-width: none; }
+.legal-list { list-style: none; padding: 0; margin: 14px 0 0; }
+.legal-list li {
+  position: relative; padding-inline-start: 20px; margin-bottom: 8px;
+  font-size: 15px; color: var(--muted);
+}
+.legal-list li::before { content: '—'; position: absolute; inset-inline-start: 0; color: var(--maroon); }
+.legal-draft {
+  display: inline-block; background: #fef3e8; color: #b45309;
+  font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+  margin-bottom: 8px;
+}
 .center { text-align: center; margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
 /* Thematic cards: people pick a trip by mood, not by feature. */
@@ -222,18 +256,23 @@ table.cmp td:first-child { font-weight: 600; }
 .card.person img { width: 62px; height: 62px; border-radius: 14px; margin-bottom: 10px; }
 .card.person .role { color: var(--maroon); font-weight: 700; font-size: 13px; margin: 0 0 6px; }
 
-.footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
-
 @media (max-width: 820px) {
   .two-col { grid-template-columns: 1fr; gap: 26px; }
   .two-col.reverse > :first-child { order: 0; }
 }
 @media (max-width: 640px) {
   .nav-burger { display: block; }
-  .nav .wrap { flex-wrap: wrap; }
+  /* .wrap's height:68px (set above for the collapsed bar) doesn't grow when
+     the menu opens and wraps to a second row — the open menu was overflowing
+     past that fixed height, escaping .nav's own background/blur, and
+     painting directly over the hero section with nothing behind it. */
+  .nav .wrap { flex-wrap: wrap; height: auto; min-height: 68px; }
   /* Overrides the earlier rule that hid every non-button link on mobile. */
   .nav-links { display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 4px; padding: 10px 0 4px; }
-  .nav-links.open { display: flex; }
+  /* Belt-and-braces: an explicit opaque background on the open menu itself,
+     so it can never show page content through it regardless of the .wrap
+     sizing above. */
+  .nav-links.open { display: flex; background: var(--cream); }
   .nav-links a:not(.btn) { display: block; padding: 11px 4px; border-bottom: 1px solid var(--line); }
   .section { padding: 46px 0; }
   .hero-full { padding: 54px 0 58px; }
