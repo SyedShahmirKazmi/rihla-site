@@ -13,12 +13,13 @@
   burger.addEventListener('click', function () {
     set(!links.classList.contains('open'))
   })
-  // Escape closes, and so does following a link.
+  // Escape closes, and so does following a link. Use closest() so links with
+  // nested SVG icons behave exactly like text-only links on mobile.
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') set(false)
   })
   links.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') set(false)
+    if (e.target.closest && e.target.closest('a')) set(false)
   })
 })()
 
@@ -35,6 +36,62 @@
     a.target = '_blank'
     a.rel = 'noopener noreferrer'
     return a
+  }
+
+  function instagramIconLink() {
+    var a = document.createElement('a')
+    a.href = instagramUrl
+    a.target = '_blank'
+    a.rel = 'noopener noreferrer'
+    a.setAttribute('aria-label', 'Rihla AI Travel on Instagram')
+    a.setAttribute('title', 'Instagram')
+    a.setAttribute('data-rihla-instagram-nav', '')
+    a.style.display = 'inline-flex'
+    a.style.alignItems = 'center'
+    a.style.justifyContent = 'center'
+    a.style.lineHeight = '0'
+
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+    svg.setAttribute('viewBox', '0 0 24 24')
+    svg.setAttribute('width', '20')
+    svg.setAttribute('height', '20')
+    svg.setAttribute('fill', 'none')
+    svg.setAttribute('stroke', 'currentColor')
+    svg.setAttribute('stroke-width', '1.8')
+    svg.setAttribute('stroke-linecap', 'round')
+    svg.setAttribute('stroke-linejoin', 'round')
+    svg.setAttribute('aria-hidden', 'true')
+
+    var roundedSquare = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
+    roundedSquare.setAttribute('x', '3')
+    roundedSquare.setAttribute('y', '3')
+    roundedSquare.setAttribute('width', '18')
+    roundedSquare.setAttribute('height', '18')
+    roundedSquare.setAttribute('rx', '5')
+
+    var lens = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+    lens.setAttribute('cx', '12')
+    lens.setAttribute('cy', '12')
+    lens.setAttribute('r', '4')
+
+    var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+    dot.setAttribute('cx', '17.5')
+    dot.setAttribute('cy', '6.5')
+    dot.setAttribute('r', '1')
+    dot.setAttribute('fill', 'currentColor')
+    dot.setAttribute('stroke', 'none')
+
+    svg.appendChild(roundedSquare)
+    svg.appendChild(lens)
+    svg.appendChild(dot)
+    a.appendChild(svg)
+    return a
+  }
+
+  var navLinks = document.getElementById('nav-links')
+  var getAppLink = navLinks && navLinks.querySelector('[data-get-app]')
+  if (navLinks && getAppLink && !navLinks.querySelector('[data-rihla-instagram-nav]')) {
+    navLinks.insertBefore(instagramIconLink(), getAppLink)
   }
 
   var footerContact = document.querySelector('footer .footer-legal span:last-child')
