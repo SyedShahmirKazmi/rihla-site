@@ -22,6 +22,45 @@
   })
 })()
 
+// Public feedback and social links. Inject from the shared script so every
+// public page stays consistent without duplicating footer markup.
+;(function () {
+  var feedbackUrl = 'https://www.surveymonkey.com/r/DGJDB8W'
+  var instagramUrl = 'https://www.instagram.com/rihlaaitravel/'
+
+  function externalLink(label, href) {
+    var a = document.createElement('a')
+    a.textContent = label
+    a.href = href
+    a.target = '_blank'
+    a.rel = 'noopener noreferrer'
+    return a
+  }
+
+  var footerContact = document.querySelector('footer .footer-legal span:last-child')
+  if (footerContact && !footerContact.querySelector('[data-rihla-feedback]')) {
+    footerContact.appendChild(document.createTextNode(' · '))
+    var feedback = externalLink('Feedback', feedbackUrl)
+    feedback.setAttribute('data-rihla-feedback', '')
+    footerContact.appendChild(feedback)
+    footerContact.appendChild(document.createTextNode(' · '))
+    var instagram = externalLink('Instagram', instagramUrl)
+    instagram.setAttribute('data-rihla-instagram', '')
+    footerContact.appendChild(instagram)
+  }
+
+  // The home page already has a compact line below the primary CTA. Add the
+  // feedback ask there only after visitors have had a clear chance to try Rihla.
+  var heroFine = document.querySelector('.hero-full .hero-fine')
+  if (heroFine && !heroFine.querySelector('[data-rihla-feedback]')) {
+    heroFine.appendChild(document.createTextNode(' · '))
+    var heroFeedback = externalLink('Tried Rihla? Share feedback →', feedbackUrl)
+    heroFeedback.className = 'hero-waitlist-link'
+    heroFeedback.setAttribute('data-rihla-feedback', '')
+    heroFine.appendChild(heroFeedback)
+  }
+})()
+
 // Hero parallax. Each layer moves at its own rate on scroll, which is what
 // makes a flat gradient read as depth. Deliberately small numbers: this should
 // register as "the scene has weight", not as an effect anyone notices.
