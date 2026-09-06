@@ -13,13 +13,109 @@
   burger.addEventListener('click', function () {
     set(!links.classList.contains('open'))
   })
-  // Escape closes, and so does following a link.
+  // Escape closes, and so does following a link. Use closest() so links with
+  // nested SVG icons behave exactly like text-only links on mobile.
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') set(false)
   })
   links.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') set(false)
+    if (e.target.closest && e.target.closest('a')) set(false)
   })
+})()
+
+// Public feedback and social links. Inject from the shared script so every
+// public page stays consistent without duplicating footer markup.
+;(function () {
+  var feedbackUrl = 'https://www.surveymonkey.com/r/DGJDB8W'
+  var instagramUrl = 'https://www.instagram.com/rihlaaitravel/'
+
+  function externalLink(label, href) {
+    var a = document.createElement('a')
+    a.textContent = label
+    a.href = href
+    a.target = '_blank'
+    a.rel = 'noopener noreferrer'
+    return a
+  }
+
+  function instagramIconLink() {
+    var a = document.createElement('a')
+    a.href = instagramUrl
+    a.target = '_blank'
+    a.rel = 'noopener noreferrer'
+    a.setAttribute('aria-label', 'Rihla AI Travel on Instagram')
+    a.setAttribute('title', 'Instagram')
+    a.setAttribute('data-rihla-instagram-nav', '')
+    a.style.display = 'inline-flex'
+    a.style.alignItems = 'center'
+    a.style.justifyContent = 'center'
+    a.style.lineHeight = '0'
+
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+    svg.setAttribute('viewBox', '0 0 24 24')
+    svg.setAttribute('width', '20')
+    svg.setAttribute('height', '20')
+    svg.setAttribute('fill', 'none')
+    svg.setAttribute('stroke', 'currentColor')
+    svg.setAttribute('stroke-width', '1.8')
+    svg.setAttribute('stroke-linecap', 'round')
+    svg.setAttribute('stroke-linejoin', 'round')
+    svg.setAttribute('aria-hidden', 'true')
+
+    var roundedSquare = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
+    roundedSquare.setAttribute('x', '3')
+    roundedSquare.setAttribute('y', '3')
+    roundedSquare.setAttribute('width', '18')
+    roundedSquare.setAttribute('height', '18')
+    roundedSquare.setAttribute('rx', '5')
+
+    var lens = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+    lens.setAttribute('cx', '12')
+    lens.setAttribute('cy', '12')
+    lens.setAttribute('r', '4')
+
+    var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+    dot.setAttribute('cx', '17.5')
+    dot.setAttribute('cy', '6.5')
+    dot.setAttribute('r', '1')
+    dot.setAttribute('fill', 'currentColor')
+    dot.setAttribute('stroke', 'none')
+
+    svg.appendChild(roundedSquare)
+    svg.appendChild(lens)
+    svg.appendChild(dot)
+    a.appendChild(svg)
+    return a
+  }
+
+  var navLinks = document.getElementById('nav-links')
+  var getAppLink = navLinks && navLinks.querySelector('[data-get-app]')
+  if (navLinks && getAppLink && !navLinks.querySelector('[data-rihla-instagram-nav]')) {
+    navLinks.insertBefore(instagramIconLink(), getAppLink)
+  }
+
+  var footerContact = document.querySelector('footer .footer-legal span:last-child')
+  if (footerContact && !footerContact.querySelector('[data-rihla-feedback]')) {
+    footerContact.appendChild(document.createTextNode(' · '))
+    var feedback = externalLink('Feedback', feedbackUrl)
+    feedback.setAttribute('data-rihla-feedback', '')
+    footerContact.appendChild(feedback)
+    footerContact.appendChild(document.createTextNode(' · '))
+    var instagram = externalLink('Instagram', instagramUrl)
+    instagram.setAttribute('data-rihla-instagram', '')
+    footerContact.appendChild(instagram)
+  }
+
+  // The home page already has a compact line below the primary CTA. Add the
+  // feedback ask there only after visitors have had a clear chance to try Rihla.
+  var heroFine = document.querySelector('.hero-full .hero-fine')
+  if (heroFine && !heroFine.querySelector('[data-rihla-feedback]')) {
+    heroFine.appendChild(document.createTextNode(' · '))
+    var heroFeedback = externalLink('Tried Rihla? Share feedback →', feedbackUrl)
+    heroFeedback.className = 'hero-waitlist-link'
+    heroFeedback.setAttribute('data-rihla-feedback', '')
+    heroFine.appendChild(heroFeedback)
+  }
 })()
 
 // Hero parallax. Each layer moves at its own rate on scroll, which is what
