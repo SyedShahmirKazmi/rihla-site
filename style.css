@@ -39,6 +39,30 @@ a { color: var(--maroon); }
    doesn't get reordered if this ever sits inside an RTL context. */
 .tm { font-size: 0.42em; font-weight: 700; vertical-align: super; line-height: 1; opacity: 0.65; margin-inline-start: 1px; unicode-bidi: isolate; }
 .foot-brand .tm, .deck-cover .tm { opacity: 0.7; }
+
+/* ™ pinned to the logo mark's own upper-right corner (distinct from .tm,
+   which follows the wordmark text) — wraps the <img> so the badge tracks
+   the icon regardless of where the icon is used. */
+.logo-badge { position: relative; display: inline-flex; flex-shrink: 0; }
+.logo-badge::after {
+  content: "™"; position: absolute; top: -4px; right: -6px;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--gold); color: var(--ink);
+  font-size: 9px; font-weight: 800; line-height: 15px; text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.foot-brand .logo-badge::after { width: 13px; height: 13px; font-size: 8px; line-height: 13px; top: -3px; right: -4px; }
+.hero-logo-wrap { position: relative; display: block; width: fit-content; margin: 0 auto 26px; }
+.hero-logo-wrap .hero-logo { margin: 0; display: block; }
+.hero-logo-wrap::after {
+  content: "™"; position: absolute; top: -6px; right: -10px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--gold); color: var(--ink);
+  font-size: 15px; font-weight: 800; line-height: 28px; text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
+.deck-cover .hero-logo-wrap { margin: 0 auto 26px; }
+.hero-inner .hero-logo-wrap { margin: 0 auto 18px; }
 .nav-links { display: flex; gap: 22px; margin-left: auto; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--ink); font-size: 15px; font-weight: 500; }
 .nav-links a:hover { color: var(--maroon); }
@@ -55,7 +79,7 @@ a { color: var(--maroon); }
 
 /* Hero */
 .hero { padding: 84px 0 40px; text-align: center; }
-.hero-logo { width: 108px; height: 108px; border-radius: 24px; margin: 0 auto 26px; box-shadow: 0 18px 50px rgba(139, 31, 62, 0.35); }
+.hero-logo { width: 108px; height: 108px; border-radius: 24px; box-shadow: 0 18px 50px rgba(139, 31, 62, 0.35); }
 .hero h1 { font-size: clamp(44px, 7vw, 76px); letter-spacing: 0.04em; color: var(--maroon); }
 .hero .ar { color: var(--gold); font-size: clamp(22px, 3vw, 30px); margin-top: 4px; }
 .hero .tagline { font-size: clamp(18px, 2.6vw, 24px); font-style: italic; margin: 14px auto 10px; }
@@ -133,6 +157,14 @@ footer a:hover { text-decoration: underline; }
 }
 .footer-legal a { color: rgba(255, 255, 255, 0.7); }
 
+/* Narrow IP strip — sits below the footer on every page, distinct and
+   short, so intellectual-property notice doesn't rely on someone reading
+   all the way through the footer's legal row to find it. */
+.ip-strip { background: var(--maroon-deep); color: rgba(255, 255, 255, 0.8); font-size: 12px; padding: 7px 0; }
+.ip-strip .wrap { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; text-align: center; }
+.ip-strip a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+.ip-strip a:hover { color: #fff; }
+
 /* Deck (investors) */
 .deck-section { border-bottom: 1px solid var(--cream-2); }
 .deck-cover { text-align: center; padding: 100px 0 70px; }
@@ -187,7 +219,7 @@ table.cmp td:first-child { font-weight: 600; }
   padding: 72px 0 78px;
   text-align: center;
 }
-.hero-inner .hero-logo { width: 92px; height: 92px; border-radius: 22px; margin: 0 auto 18px; display: block; }
+.hero-inner .hero-logo { width: 92px; height: 92px; border-radius: 22px; display: block; }
 .hero-full h1 { font-size: clamp(34px, 6vw, 60px); margin: 0 0 6px; color: #fff; }
 .hero-full .ar { font-size: 26px; opacity: 0.72; margin-bottom: 14px; }
 .hero-full .sub { max-width: 620px; margin: 0 auto; font-size: 17px; line-height: 1.65; opacity: 0.94; }
@@ -198,6 +230,36 @@ table.cmp td:first-child { font-weight: 600; }
 
 .section { padding: 64px 0; }
 .section.alt { background: var(--cream-2, #f2ece6); }
+
+/* Product carousel — plain horizontal scroll-snap, no JS library. The two
+   arrow buttons just scrollBy one card; native touch/trackpad swipe works
+   without them. */
+.shot-carousel-section { padding-top: 40px; padding-bottom: 24px; }
+.shot-carousel {
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  border-radius: 16px;
+}
+.shot-carousel::-webkit-scrollbar { display: none; }
+.shot-track {
+  list-style: none; margin: 0; padding: 0; display: flex; gap: 20px;
+}
+.shot-track li {
+  flex: 0 0 min(560px, 84vw); scroll-snap-align: center;
+  background: #fff; border: 1px solid var(--cream-2, #efe7d8); border-radius: 16px;
+  overflow: hidden; box-shadow: 0 18px 44px rgba(35, 22, 27, 0.12);
+}
+.shot-track img { display: block; width: 100%; height: 320px; object-fit: cover; object-position: top; }
+.shot-track p { margin: 0; padding: 14px 18px 18px; font-size: 14.5px; color: var(--muted, #6b5f5a); }
+.shot-carousel-nav { display: flex; justify-content: center; gap: 10px; margin-top: 16px; }
+.shot-carousel-btn {
+  width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--cream-2, #efe7d8);
+  background: #fff; color: var(--maroon); font-size: 16px; cursor: pointer;
+}
+.shot-carousel-btn:hover { border-color: var(--maroon); background: #fbf4f6; }
+@media (max-width: 640px) {
+  .shot-carousel-section { padding-top: 28px; }
+  .shot-track li { flex-basis: 88vw; }
+}
 .page-head { padding: 54px 0 8px; }
 
 /* Legal pages (Intellectual Property, and anywhere similar reads better

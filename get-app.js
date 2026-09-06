@@ -46,7 +46,7 @@
           '<li>Choose <strong>Add to Home Screen</strong></li>' +
           '<li>Tap <strong>Add</strong></li>' +
         '</ol>' +
-        '<a class="btn btn-ghost" href="app/">Or open it in the browser</a>'
+        '<a class="btn btn-ghost" href="/app/">Or open it in the browser</a>'
     } else if (deferred) {
       var b = document.createElement('button')
       b.className = 'btn btn-primary getapp-install'
@@ -59,13 +59,13 @@
     } else if (isAndroid) {
       body.innerHTML =
         '<ol class="getapp-steps">' +
-          '<li>Open <a href="app/">rihlatc.com/app</a> in Chrome</li>' +
+          '<li>Open <a href="/app/">rihlatc.com/app</a> in Chrome</li>' +
           '<li>Tap the <strong>⋮</strong> menu</li>' +
           '<li>Choose <strong>Install app</strong></li>' +
         '</ol>'
     } else {
       body.innerHTML =
-        '<a class="btn btn-primary" href="app/">Open Rihla</a>' +
+        '<a class="btn btn-primary" href="/app/">Open Rihla</a>' +
         '<p class="getapp-steps">On a phone, open rihlatc.com and tap “Get the app”.</p>'
     }
 

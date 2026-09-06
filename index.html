@@ -5,22 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rihla — AI Travel Companion for Qatar</title>
   <meta name="description" content="Plan a Qatar trip in one conversation. Real Doha venues, real prices, a budget that adds up. In English and Arabic." />
+  <link rel="canonical" href="https://rihlatc.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rihlatc.com/" />
+  <meta property="og:site_name" content="Rihla" />
   <meta property="og:title" content="Rihla — AI Travel Companion for Qatar" />
-  <meta property="og:description" content="Plan a Qatar trip in one conversation. Built in Doha." />
-  <meta property="og:image" content="assets/icon-512.png" />
+  <meta property="og:description" content="Plan a Qatar trip in one conversation. Real Doha venues, real prices, a budget that adds up. In English and Arabic." />
+  <meta property="og:image" content="https://rihlatc.com/assets/icon-512.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rihla — AI Travel Companion for Qatar" />
+  <meta name="twitter:description" content="Plan a Qatar trip in one conversation. Real Doha venues, real prices, a budget that adds up. In English and Arabic." />
+  <meta name="twitter:image" content="https://rihlatc.com/assets/icon-512.png" />
   <link rel="icon" type="image/png" href="assets/icon-32.png" />
   <link rel="apple-touch-icon" href="assets/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Rihla",
+    "url": "https://rihlatc.com/",
+    "logo": "https://rihlatc.com/assets/icon-512.png",
+    "description": "Rihla is an AI travel companion that plans costed Qatar trips in one conversation, grounded in real Doha venues, with one-tap bookings and full Arabic support.",
+    "email": "hello@rihlatc.com",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Qatar"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Rihla",
+    "url": "https://rihlatc.com/"
+  }
+  </script>
 </head>
 <body>
 
 <nav class="nav">
   <div class="wrap">
-    <a class="nav-brand" href="index.html"><img src="assets/icon-192.png" alt="" />Rihla<span class="tm" aria-hidden="true">™</span></a>
+    <a class="nav-brand" href="index.html"><span class="logo-badge"><img src="assets/icon-192.png" alt="" /></span>Rihla<span class="tm" aria-hidden="true">™</span></a>
     <button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">☰</button>
     <div class="nav-links" id="nav-links">
+      <a href="guide/index.html">Guide</a>
       <a href="product.html">Product</a>
       <a href="about.html">About</a>
       <a href="investors.html">Investors</a>
@@ -41,7 +73,7 @@
     <div class="layer layer-dhow"    data-depth="0.62"></div>
   </div>
   <div class="hero-inner wrap">
-    <img class="hero-logo" src="assets/icon-512.png" alt="Rihla dhow logo" />
+    <span class="hero-logo-wrap"><img class="hero-logo" src="assets/icon-512.png" alt="Rihla dhow logo" /></span>
     <h1 class="serif">Doha, planned properly</h1>
     <div class="ar">رحلة</div>
     <p class="sub">
@@ -56,6 +88,33 @@
     <p class="hero-fine">Free. No account needed to try. · <a class="hero-waitlist-link" href="#waitlist">Get launch updates →</a></p>
   </div>
 </header>
+
+<!-- Product carousel — real screens, not stock photography, right where the
+     hero used to hand off to plain whitespace before the theme cards. -->
+<section class="section shot-carousel-section">
+  <div class="wrap">
+    <div class="shot-carousel" tabindex="0" aria-label="Rihla product screens">
+      <ul class="shot-track">
+        <li>
+          <img src="assets/plan-desktop.png" alt="A costed Doha itinerary, day by day, in Rihla" loading="lazy" />
+          <p>A costed itinerary, line by line — every riyal accounted for.</p>
+        </li>
+        <li>
+          <img src="assets/plan-arabic-rtl.png" alt="Rihla's interface in Arabic with right-to-left layout" loading="lazy" />
+          <p>Full Arabic, right to left — not a translation layer bolted on.</p>
+        </li>
+        <li>
+          <img src="assets/plan-mobile.png" alt="Rihla open on a phone while travelling" loading="lazy" />
+          <p>Built for the trip, not the desk — plans your phone anywhere.</p>
+        </li>
+      </ul>
+    </div>
+    <div class="shot-carousel-nav">
+      <button type="button" class="shot-carousel-btn" data-dir="-1" aria-label="Previous screen">←</button>
+      <button type="button" class="shot-carousel-btn" data-dir="1" aria-label="Next screen">→</button>
+    </div>
+  </div>
+</section>
 
 <!-- Thematic entry points. People choose a trip by what they want to do, not by
      a feature list, which is how every tourism board organises its front page. -->
@@ -161,7 +220,7 @@
 
 <footer>
   <div class="wrap">
-    <span class="foot-brand"><img src="assets/icon-192.png" alt="" />© 2026 Rihla<span class="tm" aria-hidden="true">™</span>. All rights reserved. · Doha, Qatar</span>
+    <span class="foot-brand"><span class="logo-badge"><img src="assets/icon-192.png" alt="" /></span>© 2026 Rihla<span class="tm" aria-hidden="true">™</span>. All rights reserved. · Doha, Qatar</span>
     <span>
       <a href="product.html">Product</a> ·
       <a href="about.html">About</a> ·
@@ -174,9 +233,30 @@
   </div>
 </footer>
 
+<div class="ip-strip">
+  <div class="wrap">
+    <span>© 2026 Rihla<span class="tm" aria-hidden="true">™</span>. All rights reserved.</span>
+    <a href="intellectual-property.html">Intellectual Property</a>
+  </div>
+</div>
+
 <script src="nav.js"></script>
 <script src="analytics.js"></script>
 <script src="waitlist.js"></script>
 <script src="get-app.js"></script>
+<script>
+  (function () {
+    var track = document.querySelector('.shot-carousel')
+    if (!track) return
+    var card = track.querySelector('li')
+    document.querySelectorAll('.shot-carousel-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dir = Number(btn.getAttribute('data-dir'))
+        var step = (card ? card.offsetWidth : 300) + 20
+        track.scrollBy({ left: dir * step, behavior: 'smooth' })
+      })
+    })
+  })()
+</script>
 </body>
 </html>
